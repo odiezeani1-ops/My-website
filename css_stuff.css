@@ -1,0 +1,102 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, #007bff, #000000);
+  /* Use min-height 100vh instead of height 100% to ensure 
+     it covers scrolling content */
+  min-height: 100vh; 
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.footertext {
+  color: white;
+  text-align: center;
+  padding: 10px;
+}   
+h1, h3 {
+  color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+.box {
+  background-color: aqua;
+  border: 1px white solid;
+  min-height: 50px;
+}
+header {
+  padding: 50px;
+}
+section {
+  scroll-margin: 50px;
+}
+.carousel-item {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-vertical .carousel-item-next.carousel-item-start,
+  .carousel-vertical .carousel-item-prev.carousel-item-end {
+    transform: translate3d(0, 0, 0);
+  }
+  .carousel-vertical .carousel-item-start,
+  .carousel-vertical .carousel-item-prev {
+    transform: translate3d(0, -100%, 0);
+  }
+  .carousel-vertical .carousel-item-end,
+  .carousel-vertical .carousel-item-next {
+    transform: translate3d(0, 100%, 0);
+  }
+  
+
+.contact form{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #ADD8E6; 
+  border-radius: 8px;
+  box-sizing: border-box; 
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;}
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

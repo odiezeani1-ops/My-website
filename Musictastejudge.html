@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Odinaka's site</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="css_stuff.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body class="blue-to-black">
+        <h3> This is a code that tests your bad music taste level. 
+            6-10 is good music taste, 3-5 is don't play music near me and less than that is jump off a bridge.
+             Because there are thousands of artists I've selected a few badd eggs that if present in your answers, will decrease your score. 
+             At the end you can type an artist that decreased your score and the code will tell you why I think they’re bad/mid. 
+             Some of these are ok artists but cmon they shouldn'nt be in your top ten.
+             Also note that you should use only lower case for example type frank ocean instead of Frank Ocean. 
+        </h3>
+        <h4>Answer the following questions with your top 3 artists</h4>
+        <div>
+            <label for="artist1">No1 artist:</label>
+            <input type="text" id="artist1" placeholder="e.g. frank ocean">
+            <br>
+            <label for="artist2">No2 artist:</label>
+            <input type="text" id="artist2">
+            <br>
+            <label for="artist3">No3 artist:</label>
+            <input type="text" id="artist3">
+            <br>
+            <button id="run" type="button">Run Taste Test</button>
+        </div>
+        <div id="output"></div>
+        <script>
+function runTest() {
+    const answer1 = document.getElementById('artist1').value.toLowerCase();
+    const answer2 = document.getElementById('artist2').value.toLowerCase();
+    const answer3 = document.getElementById('artist3').value.toLowerCase();
+    let points = 10.0;
+    const listofanswers = [answer1, answer2, answer3];
+    const Btier = ["billie eilish", "taylor swift", "zlatan", "playboi carti", "sexyy red", "burna boy", "katseye",
+             "britney spears", "d4vd", "central cee", "tyla"];
+
+    const dict_of_artists = {
+        "katseye": "beautiful girls bad shein type of music as well as queer baiting, sexualization and racism",
+        "billie eilish": "bland grammy thief",
+        "playboi carti": "overrated abuser",
+        "tate mcrae": "bland white girl slop",
+        "taylor swift": "really?",
+        "d4vd": "killer, stalker and weirdo",
+        "sexyy red": "laced edges music",
+        "burna boy": "xenophobic, misogynistic asshole who hates the people that made him famous and his music has been on decline as of now",
+        "central cee": "overrated",
+        "davido": "bland mom music",
+        "hillsong": "bland",
+        "polo g": "2019",
+        "tyla": "grammy thief"
+    };
+
+    const Ftier = ["davido", "yeat", "tate mcrae", "madison beer", "seyi vibes", "yuno miles", "mavo", "poco lee", "jojo siwa", "polo g", "dance monkeys", "jennifer lopez", "hillsong"];
+
+    let output = "";
+    for (const artist of listofanswers) {
+        if (Btier.includes(artist)) {
+            points -= 3;
+            output += `${artist.charAt(0).toUpperCase() + artist.slice(1)} - you gave a mid artist<br>`;
+        } else if (Ftier.includes(artist)) {
+            points -= 4.5;
+            output += `${artist.charAt(0).toUpperCase() + artist.slice(1)} - you gave a horrible artist<br>`;
+        } else {
+            output += `${artist.charAt(0).toUpperCase() + artist.slice(1)} - you're good<br>`;
+        }
+    }
+
+    output += `Here's your score: ${points}<br>`;
+
+    if (points < 10) {
+        const staymad = prompt("If your score isn't perfect… what artist did you give me? ");
+        if (staymad) {
+            output += truthteller(staymad) + "<br>";
+            const freeabeg = confirm("Is there any other artist? ");
+            if (freeabeg) {
+                const y = prompt("Pass me their name: ");
+                if (y) {
+                    output += truthteller(y) + "<br>";
+                    const freeabeg2 = confirm("If you still have one more artist whose taste is bad, yes or no: ");
+                    if (freeabeg2) {
+                        const z = prompt("Nawa for you, pass the name: ");
+                        if (z) {
+                            output += truthteller(z) + "<br>";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    document.getElementById('output').innerHTML = output;
+}
+
+function truthteller(x) {
+    const x_lower = x.toLowerCase();
+    if (dict_of_artists.hasOwnProperty(x_lower)) {
+        return `Here's my reason for ${x.charAt(0).toUpperCase() + x.slice(1)}: ${dict_of_artists[x_lower]}`;
+    } else {
+        return `I don't have an opinion on ${x.charAt(0).toUpperCase() + x.slice(1)}`;
+    }
+}
+
+document.getElementById('run').addEventListener('click', runTest);
+        </script>
+</script>
